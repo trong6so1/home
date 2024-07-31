@@ -9,25 +9,12 @@
             </template>    
         </Menubar>
     </div>
-    <div class="d-flex flex-row">
-        <div class="leftMenu border-0">
-            <TheMenu :fields="items" :title="title" />
-        </div>
-        <div class="rightMenu d-flex flex-column border border-1 me-3 rounded-3">
-            <div class="p-4">
-                <h5 class="title">{{ title }}</h5>
-                <hr>
-            </div>
-        </div>
-    </div>
 </template>
 <script>
 import Menubar from 'primevue/menubar';
-import TheMenu from '@/views/component/TheMenu/index.vue'
 export default {
     components: {
         Menubar,
-        TheMenu
     },
     name: 'MenuHeader',
     data() {
@@ -78,7 +65,6 @@ export default {
                     icon: 'pi pi-lightbulb'
                 },
             ],
-            title: 'Trang chủ'
         }
     },
 }
@@ -87,10 +73,5 @@ export default {
 .p-menubar{
     border: none
 }
-.leftMenu {
-    width: 15%
-}
-.rightMenu {
-    width: 85%
-}
+
 </style>

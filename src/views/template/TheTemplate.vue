@@ -2,6 +2,9 @@
   <div>
     <TheHeader />
   </div>
+  <div>
+    <router-view/>
+  </div>
 </template>
 
 <script>
