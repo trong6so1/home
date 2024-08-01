@@ -2,9 +2,12 @@
   <div>
     <Menu :model="items" class="border-0">
       <template #item="{ item }">
-        <div class="d-flex flex-row">
-          <span class="pi pi-tags align-self-center me-3 text-warning"></span>
-          <h5 class="fs-6" :style="item.label == this.title ? styleTitleActive : ''">{{ item.label }}</h5>
+        <div class="d-flex flex-row" :style="item.label == this.title ? styleTitleActive : ''">
+          <span class="pi pi-tags fs-6 me-3 text-warning"></span>
+          <div class="d-flex flex-row">
+            <h5 class="fs-6">{{ item.label }}</h5>
+            <Tag severity="secondary" :value="item.tag" v-if="item.tag"></Tag>
+          </div>
         </div>
       </template>
     </Menu>
@@ -12,10 +15,13 @@
 </template>
 <script>
 import Menu from "primevue/menu";
+import Tag from "primevue/tag";
+
 export default {
   name: "TheMenu",
   components: {
     Menu,
+    Tag
   },
   props: {
     fields: {
@@ -37,7 +43,8 @@ export default {
     return {
       items: this.fields,
       styleTitleActive: {
-        color: "red"
+        color: "red",
+        background: "#f3f3f3"
       }
     };
   },

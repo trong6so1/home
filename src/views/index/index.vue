@@ -4,16 +4,16 @@
             <TheMenu :fields="items" :title="title" />
         </div>
         <div class="rightMenu d-flex flex-column border border-1 me-3 rounded-3">
-            <div class="p-4">
-                <h5 class="title">{{ title }}</h5><hr>
-                <router-view/>
-            </div>
+            <router-view/>
         </div>
     </div>
 </template>
 <script>
 import TheMenu from '@/views/component/TheMenu/index.vue';
 import { fields } from './fields';
+import { ref } from 'vue';
+
+const titleHeader = ref("");
 export default {
     name: "Index",
     components: {
@@ -21,8 +21,8 @@ export default {
     },
     data() {
         return {
-            items: [],
-            title: 'Bảng tin'
+            items: [], 
+            title: titleHeader.value
         }
     },
     created() {

@@ -2,7 +2,7 @@
     <div>
         <Menubar :model="items">
             <template #item="{ item, props }">
-                <div class="d-flex flex-column justify-content-center align-items-center fw-bold text-primary p-2 mx-4">
+                <div class="d-flex flex-column justify-content-center align-items-center fw-bold text-primary p-2 mx-4" >
                     <span :class="item.icon"  class="fs-3"/>
                     <span class="ml-2">{{ item.label }}</span>
                 </div> 
