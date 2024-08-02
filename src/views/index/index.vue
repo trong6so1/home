@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-row">
         <div class="leftMenu border-0">
-            <TheMenu :fields="items" :title="title" />
+            <TheMenu :fields="items" />
         </div>
         <div class="rightMenu d-flex flex-column border border-1 me-3 rounded-3">
             <router-view/>
@@ -15,8 +15,8 @@ import { ref } from 'vue';
 
 const titleHeader = ref("");
 export default {
-    name: "Index",
-    components: {
+    name: "TheHome",
+    components: { 
         TheMenu
     },
     data() {
