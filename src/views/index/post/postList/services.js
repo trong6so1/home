@@ -1,13 +1,15 @@
-export const fields = [
-    {
-        title:"Thông báo mở lớp thi thực hành Ứng dụng CNTT khóa 7",
-        date: "02/08/2014",
-        isNew: true,
-        id: 1
-    },
-    {
-        title:"Thông báo mở lớp thi thực hành Ứng dụng CNTT khóa 7",
-        date: "02/08/2014",
-        id:2
+import request from "@/utils/request"
+import api from "@/services/api"
+
+export default class PostServices {
+    getMaster(query) {
+      const reqParams = api("post", "list")
+      reqParams.data = Object.assign({}, query)
+      console.log((reqParams));
+      return request(reqParams)
+        .then((response) => {
+          return response
+        })
+        .then((d) => d)
     }
-]
+}

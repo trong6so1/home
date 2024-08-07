@@ -4,13 +4,13 @@
         <div>
             <div v-for="field of fields" class="d-flex flex-row my-2">
                 <div class="border border-1 me-2  py-1 px-3 d-flex flex-column">
-                    <span class="m-0 fs-3 text-danger text-center fw-bold">{{field.date.getDate()}}</span>
-                    <span class="m-0 fs-3 border-top border-3 border-danger w-100 fw-bold text-secondary">{{field.date.getMonth()+1 + '/' + field.date.getFullYear()}}</span>
+                    <span class="m-0 fs-3 text-danger text-center fw-bold">{{field.created_at.getDate().toString().padStart(2, "0")}}</span>
+                    <span class="m-0 fs-3 border-top border-3 border-danger w-100 fw-bold text-secondary">{{(field.created_at.getMonth()+1).toString().padStart(2, "0") + '/' + field.created_at.getFullYear()}}</span>
                 </div>
                 <div>
                     <router-link v-slot="{href}" :to="'/home/postDetail/'+field.id" custom>
                         <a :href="href" class="text-decoration-none text-dark title-post">
-                        <span><span class="fw-bold fs-5">{{field.title}}</span> <span v-if="field.isNew">(NEW)</span><span class="fw-100">{{' '+field.date}}</span></span>
+                        <span><span class="fw-bold fs-5">{{field.title}}</span> <span v-if="field.isNew">(NEW)</span><span class="fw-100">{{' '+field.created_at}}</span></span>
                         </a>
                     </router-link>
                 </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import {fields} from './services.js'
+import PostServices from './services.js'
 export default {
     name: 'PostList',
     data() {
@@ -29,10 +29,16 @@ export default {
         }
     },
     created() {
-        fields.forEach(field => {
-            field.date= new Date(field.date);
-        });
-        this.fields = fields;
+        const services = new PostServices();
+        services.getMaster().then((req) => {
+            const fields = req.data.data.map((item)=> {
+                return {
+                    ...item,
+                    created_at : new Date(item.created_at)  
+                }
+            })
+            this.fields = fields
+        })
     }
 }
 </script>
