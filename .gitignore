@@ -26,5 +26,7 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-
+.vue
+package.json
+package-log.json
 *.tsbuildinfo
