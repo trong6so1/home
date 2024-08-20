@@ -1,7 +1,8 @@
 export const fields = [
     {
         label: "Bảng tin",
-        route: "/home/post"
+        route: "/home/post",
+        childrenRoute: 'post'
     },
     {
         label: "Thông báo cá nhân",

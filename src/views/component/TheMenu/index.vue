@@ -5,7 +5,7 @@
         <div>
           <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
             <a :href="href"  
-            :style="title == item.label ? styleTitleActive : ''"
+            :style="path.includes(item.childrenRoute) ? styleTitleActive : ''"
             class="d-flex flex-row p-0" 
             @click.prevent="ChangeTitle(item.label,navigate)" 
             v-bind="props.action"
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       items: this.fields,
-      title: '',
+      path: '',
       styleTitleActive: {
         color: "red",
         background: "#f3f3f3"
@@ -57,5 +57,8 @@ export default {
       navigate();
     }
   },
+  created() {
+    this.path = this.$route.path;
+  }
 };
 </script>

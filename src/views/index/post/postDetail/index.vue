@@ -1,6 +1,6 @@
 <template>
     <div class="p-1">
-        <h6 class="title px-2 py-2 fw-bold">Bảng tin</h6><hr class="mt-1">
+        <h6 class="title px-2 py-2 fw-bold">Chi Tiet</h6><hr class="mt-1">
         <div>
             <div v-for="field of fields" class="d-flex flex-row my-2">
                 <div class="border border-1 me-2  py-1 px-3 d-flex flex-column">
